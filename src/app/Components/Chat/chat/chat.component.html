@@ -1,0 +1,84 @@
+<div class="container" fxLayout="row wrap">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.md="100%" class="sidenav">
+        <div  class="pd bg-blue justify">
+            <mat-icon>question_answer</mat-icon>Discussion
+        </div>
+        <mat-divider></mat-divider>
+        <form fxLayout="row" class="example-form">
+              <input type="text" 
+                     name="searchedPerson"
+                     matInput 
+                     placeholder="search"
+                     [(ngModel)]="filterString">
+              <mat-icon matSuffix>search</mat-icon>
+        </form>
+          <mat-divider></mat-divider>
+          <div>
+          <mat-list  role="list">
+        <mat-list-item  *ngFor="let room of rooms$ |async |filter:filterString" (click)="handleSelectedRoom(room._id)"  [ngClass]="{'active-room':room._id==selectedRoom}" class="pd pointer" fxLayoutGap="10px"  fxLayout="row wrap" role="listitem">
+                <img *ngIf="!(room.patient.image)||!(room.doctor.image)" class="img-profile" fxFlex="calc(30%-10px)"src="assets/images/unknown_person.png"/>
+                <img *ngIf="(currentUser.role=='Doctor')&&(room.patient.image)" class="img-profile" fxFlex="calc(30%-10px)"src="assets/uploads/{{room.patient.image}}"/>
+                <img *ngIf="(currentUser.role=='Patient')&&(room.doctor.image)" class="img-profile" fxFlex="calc(30%-10px)"src="assets/uploads/{{room.doctor.image}}"/>  
+                <p   *ngIf="currentUser.role=='Patient'" class="noun" fxFlex="calc(70%-10px)">Doctor {{room.doctor.first_name}} {{room.doctor.last_name}}</p>  
+                <p   *ngIf="currentUser.role=='Doctor'" class="noun" fxFlex="calc(70%-10px)"> {{room.patient.first_name}} {{room.patient.last_name}}</p>  
+        </mat-list-item>        
+          </mat-list>
+        </div>
+    
+    </div>
+    <div fxFlex="80%"  fxFlex.xs="100%" fxFlex.md="100%" class="chat">
+       <div style="height: 100%;" fxLayout="row wrap">
+        <mat-card fxFlex="100%" class="pd-none hight-long">
+            <div  class="pd bg-blue justify">
+                <mat-icon>person</mat-icon>Discussion
+            </div>
+            <mat-divider></mat-divider>
+            <div class="conversation">
+                <div class="msg-container" *ngFor="let message of CurrentConversation">
+                   <div>
+                    <div class="message" [ngClass]="{'mine':message.postedByUser._id==currentUser._id,'not-mine':message.postedByUser._id!=currentUser._id}" fxLayout="row wrap">
+                        <div style="display: flex; justify-content: end;">
+                          <img *ngIf="!message.postedByUser.image" class="img-profile" fxFlex="calc(30%-10px)"src="assets/images/unknown_person.png"/>
+                          <img *ngIf="message.postedByUser.image" class="img-profile" fxFlex="calc(30%-10px)"src="assets/uploads/{{message.postedByUser.image}}"/>
+                        </div>
+                        <div >
+                          <p>{{message.postedByUser.first_name}}  {{message.postedByUser.last_name}}</p>
+                          <div class="content-message">
+                          <p>{{message.message}}</p>
+                          <p class="msg-time">{{message.createdAt}}</p>
+                         </div>
+                           
+                        </div>
+                  </div>
+                   </div>
+                    
+                </div>
+                <div class="msg-container" *ngFor="let message of virtualConversation">
+                    <div class="message" [ngClass]="{'right':message.postedByUser._id==currentUser._id,'left':message.postedByUser._id!=currentUser._id}" fxLayout="row wrap">
+                          <div>
+                            <img *ngIf="!message.postedByUser.image" class="img-profile" fxFlex="calc(30%-10px)"src="assets/images/unknown_person.png"/>
+                            <img *ngIf="message.postedByUser.image" class="img-profile" fxFlex="calc(30%-10px)"src="assets/uploads/{{message.postedByUser.image}}"/>
+                          </div>
+                          <div >
+                            <p>{{message.postedByUser.first_name}}  {{message.postedByUser.last_name}}</p>
+                            <div class="content-message">
+                            <p>{{message.message}}</p>
+                            <p class="msg-time">{{message.createdAt}}</p>
+                           </div>
+                          </div>
+                    </div>
+                    
+                </div>
+            
+            
+            </div> 
+        </mat-card>
+        <form fxLayout="row" fxFlex="100%" class="example-form">
+           
+            <input name="sendedMessage" [(ngModel)]="sendedMessage" fxFlex="98%" type="text" matInput placeholder="write a message">
+            <mat-icon (click)="sendMessage()" class=" pointer" fxFlex="2%" matSuffix>send</mat-icon>
+         
+        </form>
+       </div>
+    </div>
+</div>

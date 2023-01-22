@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="alert-error" *ngIf="error">
+    {{error}}
+</div>
+<mat-card class="login-form">
+     <mat-card-header   class="card-header" fxLayout fxLayoutAlign="center">
+        Login
+      </mat-card-header>
+      <mat-card-content >
+        <div class="container" >
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
+                <mat-form-field appearance="standard">
+                    <mat-label>email</mat-label>
+                    <input matInput  placeholder="Type your email" formControlName="email" #nameInput>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-hint>email is required </mat-hint>
+                    <div *ngIf="f.email.errors && submitted">
+                        <mat-error *ngIf="f.email.errors?.['required']">email is required</mat-error>
+                    </div>
+                </mat-form-field>
+        
+                <mat-form-field appearance="legacy">
+                    <mat-label>password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Your password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>password is required</mat-hint>
+                    <div *ngIf="f.password.errors && submitted">
+                        <mat-error *ngIf="f.password.errors?.['required']">password is required</mat-error>
+                    </div>
+                </mat-form-field>
+
+                <button mat-button color="primary">Submit</button>
+             <ul>
+                 <li> <span class="link" routerLink="/register">do not have an account</span>
+                    </li>
+                 <li><span class="link" routerLink="/register">forgot password</span></li>
+             </ul>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

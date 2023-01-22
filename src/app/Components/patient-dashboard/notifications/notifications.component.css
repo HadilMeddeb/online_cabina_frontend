@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+  h1{margin: 20px;}
+  .cnt-style
+  {padding: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(63, 44, 172);}

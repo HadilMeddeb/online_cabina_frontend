@@ -1,0 +1,51 @@
+
+<mat-toolbar  color="primary" style="margin:0;">
+    <mat-icon> local_hospital</mat-icon>
+    <span style="margin-left: 10px;">Online Cabina</span>
+    <span class="example-spacer"></span>
+<div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="redirectProfile()">profile</button>
+    <button mat-menu-item (click)="redirect()">Dashboard</button>
+    <button mat-menu-item disabled >parameter</button>
+  </mat-menu> 
+  <button *ngIf="this.loggedIn()" mat-button [matMenuTriggerFor]="menu">- {{this.getCurrentUser().last_name}} {{this.getCurrentUser().first_name}} - </button>
+
+
+  <button style="margin-right:10px" mat-raised-button 
+  matTooltip="Info about the action"
+  matTooltipClass="example-tooltip-red"
+  aria-label="Button that shows a red tooltip"
+  class="example-button" *ngIf="this.loggedIn()"
+  (click)="this.logout()">
+  logout
+  </button>
+    <button
+    *ngIf="!this.loggedIn()"
+    mat-icon-button
+     [matMenuTriggerFor]="log_menu"
+      aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #log_menu="matMenu">
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>login</mat-icon>
+        <span>login</span>
+      </button>
+      <button mat-menu-item routerLink="/register">
+        <mat-icon>add_person</mat-icon>
+        <span>register</span>
+      </button>
+    </mat-menu>
+     
+    <button mat-raised-button routerLink="/welcome"
+    matTooltip="Info about the action"
+    matTooltipClass="example-tooltip-red"
+    aria-label="Button that shows a red tooltip"
+    class="example-button">
+    Welcome
+    </button>
+</div>  
+</mat-toolbar>
+
+

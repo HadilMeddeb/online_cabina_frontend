@@ -1,0 +1,25 @@
+<div style="height: 100%;">
+  <mat-toolbar class="mat-toolbar">
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Demandes</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <button mat-menu-item routerLink="attente">en attente</button>
+      <button mat-menu-item routerLink="accepte">acceptes</button>
+    </mat-menu>
+    
+    <button mat-button [matMenuTriggerFor]="belowMenu"><mat-icon>person</mat-icon>patients</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="patients">patients</button>
+      
+    </mat-menu>
+    
+    <button mat-button [matMenuTriggerFor]="beforeMenu">video Conférence</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</mat-toolbar>
+<div style="height: 100%">
+  <router-outlet></router-outlet>
+</div>
+
+</div>

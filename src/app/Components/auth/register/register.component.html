@@ -1,0 +1,255 @@
+
+<app-header></app-header>
+<div class="alert-error" *ngIf="errorMessage">
+    {{errorMessage}}
+</div>
+<div class="alert-success" *ngIf="successMessage">
+    {{successMessage}}
+</div>
+
+<mat-tab-group mat-align-tabs="center" class="tabs-group" >
+    <mat-tab  label="First" >   
+        <div class="container" fxLayout="column" fxlayoutalign="center">
+            <h4 class="indice">choose your status</h4>
+        <mat-form-field appearance="fill" >
+            <mat-label>status</mat-label>
+            <mat-select [(ngModel)]="role">
+              <mat-option *ngFor="let item of roles" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> 
+    </mat-tab>
+     
+    <form *ngIf="role=='Doctor'" [formGroup]="DoctorForm" (ngSubmit)="onSubmitDoctor()" fxLayout="column">
+        <mat-tab  label="second" >   
+            <div class="container" fxLayout="column" fxlayoutalign="center">                  
+                <mat-form-field appearance="standard">
+                    <mat-label>firstname</mat-label>
+                    <input matInput  placeholder="Type name" formControlName="first_name" >
+                    <mat-hint>firstname is required</mat-hint>
+                    <div *ngIf="f_doctor.first_name.errors && submitted">
+                        <mat-error *ngIf="f_doctor.first_name.errors?.['required']">Name is required</mat-error>
+                        <mat-error *ngIf="f_doctor.first_name.errors?.['minlength']">minlength  3 letters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>lastname</mat-label>
+                    <input matInput type ="text"  placeholder="Type name" formControlName="last_name" >
+                    <mat-hint>lastname is required</mat-hint>
+                    <div *ngIf="f_doctor.last_name.errors && submitted">
+                        <mat-error *ngIf="f_doctor.last_name.errors?.['required']">lastname is required</mat-error>
+                        <mat-error *ngIf="f_doctor.last_name.errors?.['minlength']">minlength  3 letters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>email</mat-label>
+                    <input matInput  placeholder="Type name" formControlName="email" >
+                    <mat-hint>email is required</mat-hint>
+                    <div *ngIf="f_doctor.email.errors && submitted">
+                        <mat-error *ngIf="f_doctor.email.errors?.['required']">email is required</mat-error>
+                        <mat-error *ngIf="f_doctor.email.errors?.['email']">invalid form , email is required</mat-error>
+                    </div>
+                </mat-form-field>        
+                <mat-form-field appearance="legacy">
+                    <mat-label>password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Your password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>password is required</mat-hint>
+                    <div *ngIf="f_doctor.password.errors && submitted ">
+                        <mat-error *ngIf="f_doctor.password.errors?.['required']">password is required</mat-error>
+                        <mat-error *ngIf="f_doctor.password.errors?.['minlength']">min 6 letters is required</mat-error>
+                        <mat-error *ngIf="f_doctor.password.errors?.['maxlength']">max 20 letters is required</mat-error>
+                        <mat-error *ngIf="f_doctor.password.errors?.['passwordValidation']">Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>confirm password</mat-label>
+                    <input matInput type="password" formControlName="confirm" placeholder="Your password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>confirm password is required</mat-hint>
+                    <div *ngIf="f_doctor.confirm.errors && submitted">
+                        <mat-error *ngIf="f_doctor.confirm.errors?.['required']">confirm password is required </mat-error>
+                        <mat-error *ngIf="f_doctor.confirm.errors?.['mustMatch']">confirm does not much password  </mat-error> 
+                    </div>
+                </mat-form-field>
+            </div>
+        </mat-tab >    
+       
+              
+        <mat-tab label="third" >
+       
+       <div class="container" fxLayout="column" fxlayoutalign="center" >
+        <mat-form-field appearance="legacy">
+            <mat-label>local adress</mat-label>
+            <input matInput type="test" formControlName="adressLocal" placeholder="Your password">
+            <mat-icon matSuffix>room</mat-icon>
+            <mat-hint>adress is required</mat-hint>
+            <div *ngIf="f_doctor.adressLocal.errors && submitted">
+                <mat-error *ngIf="f_doctor.adressLocal.errors?.['required']">adressLocal is required </mat-error>
+                <mat-error *ngIf="f_doctor.adressLocal.errors?.['minlength']">minlength  is 20 </mat-error>
+            </div>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>phone number</mat-label>
+            <input matInput type="test" formControlName="tel" placeholder="Your password">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>phone number  is required</mat-hint>
+            <div *ngIf="f_doctor.tel.errors && submitted">
+                <mat-error *ngIf="f_doctor.tel.errors?.['required']">phone number is required </mat-error>
+                <mat-error *ngIf="f_doctor.tel.errors?.['length']"> 8 numbers are required </mat-error>
+            </div>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>speciality</mat-label>
+            <input matInput type="text" formControlName="speciality" placeholder="Your speciality">
+            <mat-icon matSuffix>work</mat-icon>
+            <mat-hint>speciality is required</mat-hint> 
+            <div *ngIf="f_doctor.speciality.errors && submitted">
+                <mat-error *ngIf="f_doctor.speciality.errors?.['required']">speciality is required </mat-error>
+                <mat-error *ngIf="f_doctor.speciality.errors?.['minlength']">minlength  is 6 </mat-error>
+            </div>
+         </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>career path and bio</mat-label>
+            <input matInput type="text" formControlName="professionnal_career" placeholder="Your career path">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint>career path is required</mat-hint> 
+            <div *ngIf="f_doctor.professionnal_career.errors && submitted">
+                <mat-error *ngIf="f_doctor.professionnal_career.errors?.['required']">professionnal_career password is required </mat-error>
+                <mat-error *ngIf="f_doctor.professionnal_career.errors?.['minlength']">minlength  is 100 letters</mat-error>
+            </div>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>tarif</mat-label>
+            <input matInput type="number" formControlName="tarif" placeholder="tarif">
+            <mat-icon matSuffix>money</mat-icon>
+            <mat-hint>tarif is required</mat-hint> 
+            <div *ngIf="f_doctor.tarif.errors && submitted">
+                <mat-error *ngIf="f_doctor.tarif.errors?.['required']">tarif is required </mat-error>
+                <mat-error *ngIf="f_doctor.tarif.errors?.['tarifValidation']"> unreasonable value</mat-error>
+            </div>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="onSubmitDoctor()">Submit</button>    
+       </div>
+        </mat-tab>
+    </form>
+    
+    <form *ngIf="role=='Patient'"(ngSubmit)="onSubmitPatient()" [formGroup]="PatientForm" fxLayout="column">
+    <mat-tab label="second" class="mat-tab"> 
+        <div class="container" fxLayout="column" fxlayoutalign="center" >
+                <mat-form-field appearance="standard">
+                    <mat-label>firstname</mat-label>
+                    <input matInput  placeholder="Type name" formControlName="first_name" >
+                    <mat-hint>firstname is required</mat-hint>
+                    <div *ngIf="f_doctor.first_name.errors && submitted">
+                        <mat-error *ngIf="f_patient.first_name.errors?.['required']">Name is required</mat-error>
+                        <mat-error *ngIf="f_patient.first_name.errors?.['minlength']">minlength  3 letters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>lastname</mat-label>
+                    <input matInput  placeholder="Type name" formControlName="last_name" >
+                    <mat-hint>lastname is required</mat-hint>
+                    <div *ngIf="f_patient.last_name.errors && submitted">
+                        <mat-error *ngIf="f_patient.last_name.errors?.['required']">lastname is required</mat-error>
+                        <mat-error *ngIf="f_patient.last_name.errors?.['minlength']">minlength  3 letters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>email</mat-label>
+                    <input matInput  placeholder="Type name" formControlName="email" >
+                    <mat-hint>email is required</mat-hint>
+                    <div *ngIf="f_patient.email.errors && submitted">
+                        <mat-error *ngIf="f_patient.email.errors?.['required']">email is required</mat-error>
+                        <mat-error *ngIf="f_patient.email.errors?.['email']">invalid form , email is required</mat-error>
+                    </div>
+                </mat-form-field>        
+                <mat-form-field appearance="legacy">
+                    <mat-label>password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Your password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>password is required</mat-hint>
+                    <div *ngIf="f_patient.password.errors && submitted ">
+                        <mat-error *ngIf="f_patient.password.errors?.['required']">password is required</mat-error>
+                        <mat-error *ngIf="f_patient.password.errors?.['minlength']">min 6 letters is required</mat-error>
+                        <mat-error *ngIf="f_patient.password.errors?.['maxlength']">max 20 letters is required</mat-error>
+                        <mat-error *ngIf="f_patient.password.errors?.['passwordValidation']">Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters</mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>confirm password</mat-label>
+                    <input matInput type="password" formControlName="confirm" placeholder="Your password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>confirm password is required</mat-hint>
+                    <div *ngIf="f_patient.confirm.errors && submitted">
+                        <mat-error *ngIf="f_patient.confirm.errors?.['required']">confirm password is required </mat-error>
+                        <mat-error *ngIf="f_patient.confirm.errors?.['mustMatch']">confirm does not mutch password  </mat-error> 
+                    </div>
+                </mat-form-field>
+                
+                <mat-form-field appearance="legacy">
+                    <mat-label>cin</mat-label>
+                    <input matInput type="number" formControlName="cin" placeholder="Your cin number">
+                    <mat-icon matSuffix>cin</mat-icon>
+                    <mat-hint>identity</mat-hint> 
+                    <div *ngIf="f_patient.cin.errors && submitted">
+                        <mat-error *ngIf="f_patient.cin.errors?.['required']"> cin is required </mat-error>
+                        <mat-error *ngIf="f_patient.cin.errors?.['length']"> 8 numbres required </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>phone</mat-label>
+                    <input matInput type="number" formControlName="phone" placeholder="Your cin number">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    
+                    <div *ngIf="f_patient.cin.errors && submitted">
+                        <mat-error *ngIf="f_patient.phone.errors?.['required']"> phone is required </mat-error>
+                        <mat-error *ngIf="f_patient.phone.errors?.['length']"> 8 numbres required </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>birthday</mat-label>
+                    <input matInput type="date"  formControlName="birthday" placeholder="Your birthday ">
+                    <mat-icon matSuffix>date</mat-icon>
+                    <div *ngIf="f_patient.cin.errors && submitted">
+                        <mat-error *ngIf="f_patient.birthday.errors?.['required']"> birthday is required </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>adress</mat-label>
+                    <input matInput type="text" formControlName="adress" placeholder="Your cin number">
+                    <mat-icon matSuffix>adress</mat-icon>
+                    <div *ngIf="f_patient.adress.errors && submitted">
+                        <mat-error *ngIf="f_patient.adress.errors?.['required']"> adress is required </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-form-field appearance="fill">
+                        <mat-label>marital status</mat-label>
+                        <select matNativeControl formControlName="marital_status" name="marital_status">
+                          <option value="married" >married</option>
+                          <option value="single" >single</option>
+                          <option value="divorced" >divorced</option>
+                        </select>
+                      </mat-form-field> 
+                    <div *ngIf="f_patient.marital_status.errors && submitted">
+                        <mat-error *ngIf="f_patient.marital_status.errors?.['required']"> marital status is required </mat-error>
+                    </div>
+                </mat-form-field>
+                <button mat-button color="primary" (click)="onSubmitPatient()">Submit</button>    
+         </div>
+    </mat-tab>
+    </form> 
+</mat-tab-group>
+
+
+ 
+   
+     
+       
+   
+
+
+ 
+
+    

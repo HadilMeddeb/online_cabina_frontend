@@ -1,0 +1,23 @@
+
+  <h1 mat-dialog-title> Appoinment Details</h1>
+<div mat-dialog-content>
+    <mat-list *ngFor="let data of datas">
+        <mat-list-item>
+            Date :    {{data.date.day}}/{{data.date.month}}/{{data.date.year}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            Time :     {{data.date.hour}}:{{data.date.minutes}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [ngClass]="{'green':data.status, 'danger':!data.status}">
+           Rendez vous pas encore fait
+        </mat-list-item>
+        
+        <mat-divider></mat-divider>
+    
+      </mat-list>
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button mat-dialog-close>close</button>
+</div> -->

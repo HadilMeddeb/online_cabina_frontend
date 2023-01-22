@@ -1,0 +1,63 @@
+<mat-card fxLayout="row wrap">
+    <div class="alert-error" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+    <div class="alert-success" *ngIf="successMessage">
+        {{successMessage}}
+    </div>
+    <form style="padding: 20px;" fxLayout="row wrap" [formGroup]="demandeForm" class="example-form">
+        <h3  class="bg" fxFlex="100%"> Get an Ahpointment Now </h3>
+        <table fxLayout="row wrap"  fxFlex="100%" class="example-full-width" cellspacing="0">
+          <tr fxFlex="100%" fxLayout="row wrap" >
+            <mat-form-field fxFlex="100%" appearance="fill">
+                <mat-label>uptime</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+                <div *ngIf="f.start.errors && submitted">
+                    <mat-error *ngIf="f.start.errors?.['required']"> start date is required </mat-error>
+                </div>
+                <div *ngIf="f.end.errors && submitted">
+                    <mat-error *ngIf="f.end.errors?.['required']"> end date is required </mat-error>
+                </div>
+              </mat-form-field>
+          </tr>
+          <tr fxLayout="row wrap" fxFlex="100%">
+                <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+                  <mat-label>maladies symptoms / faced problems </mat-label>
+                  <textarea formControlName="maladieDetails" matInput></textarea>
+                  <div *ngIf="f.maladieDetails.errors && submitted">
+                    <mat-error *ngIf="f.maladieDetails.errors?.['required']"> maladieDetails is required </mat-error>
+                </div>
+                </mat-form-field>
+          </tr>
+          <tr fxLayout="row wrap" fxFlex="100%">
+            <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+              <mat-label>raison de choix de mr {{data.first_name}} {{data.last_name}} </mat-label>
+              <textarea formControlName="raisonChoix" matInput></textarea>
+              <div *ngIf="f.raisonChoix.errors && submitted">
+                <mat-error *ngIf="f.raisonChoix.errors?.['required']"> raisonChoix is required </mat-error>
+            </div>
+            </mat-form-field>
+      </tr>
+        <tr fxFlex="100%" fxLayout="row wrap">
+            <mat-form-field fxFlex="100%" appearance="fill">
+                <mat-label>ergency etat</mat-label>
+                <select matNativeControl formControlName="etat" name="marital_status">
+                  <option value="married" >urgent</option>
+                  <option value="single" >normal</option>
+                  <option value="divorced" >in the middle</option>
+                </select>
+                <div *ngIf="f.etat.errors && submitted">
+                    <mat-error *ngIf="f.etat.errors?.['required']"> etat is required </mat-error>
+                </div>
+              </mat-form-field> 
+              <button type="submit"  (click)="onSubmit(data)" fxFlex="100%" mat-flat-button color="primary">submit</button>
+        </tr>
+        </table>
+      </form>
+</mat-card>

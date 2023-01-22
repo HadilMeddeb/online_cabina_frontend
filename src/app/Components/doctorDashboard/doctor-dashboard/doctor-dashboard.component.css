@@ -1,0 +1,10 @@
+.mat-toolbar 
+{
+    border-top: solid #ffffff 1px;
+    border-bottom: solid #ffffff 1px;
+    font-size: 25px;
+    text-transform: uppercase;
+    background-color: #6e7abe; 
+    height: 80px;
+    color: #dadef8;
+}

@@ -1,0 +1,120 @@
+
+
+<div class="alert-error" *ngIf="errorMessage">
+    {{errorMessage}}
+</div>
+<div class="alert-success" *ngIf="successMessage">
+    {{successMessage}}
+</div>
+{{currentUser}}
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+    <mat-card fxFlex="calc(30% - 20px)" >
+      <div fxLayout="row wrap">
+        <div fxFlex="100%">
+         <img  *ngIf="currentUser.image" class="img" src="assets/uploads/{{currentUser.image}}"/>
+         <img  *ngIf="!currentUser.image"  class=" img" src="../../../../assets/images/online_phone_conversation.jfif"/>
+        </div>
+           <mat-nav-list fxFlex="100%">  
+            <p class="mg align"  mat-list-item >
+              <span class="pd" mat-line>{{currentUser.first_name}}  {{currentUser.last_name}} </span>
+            </p>
+            <mat-divider></mat-divider>
+            <form style="display: flex; align-items: center; justify-content: center;">
+              <input style="margin: 20px;" type="file" (change)="onFileSelect($event)" name="image"/>
+              <div *ngIf="fim.image.errors && submitted">
+                <mat-error *ngIf="fim.image.errors?.['required']">image is required</mat-error>
+              </div>
+               <mat-icon class="pointer" (click)="updatePhoto()" fxFlex="calc(5% - 20px)">send</mat-icon>
+           
+            </form>
+           </mat-nav-list>      
+     </div>
+    </mat-card>
+   <mat-card fxFlex="calc(70% - 20px)">
+     <h3>  Profile </h3>
+     <mat-tab-group animationDuration="2000ms">
+       <mat-tab  label="profile infos">
+         <mat-nav-list style="padding: 50px;" class="center" fxFlex="100%">
+           <mat-divider></mat-divider>
+           <div fxLayout="row"  fxLayoutGap="50px" >
+            <mat-icon>person</mat-icon>  
+          <h3  mat-line >first_name : {{currentUser.first_name}}</h3>
+          </div>
+          <mat-divider></mat-divider>
+          <div fxLayout="row"  fxLayoutGap="50px" >
+            <mat-icon>person</mat-icon>  
+          <h3  mat-line >last_name : {{currentUser.last_name}}</h3>
+          </div>
+          <mat-divider></mat-divider>
+           <div fxLayout="row"  fxLayoutGap="50px" >
+             <mat-icon>email</mat-icon>  
+           <h3  mat-line >email : {{currentUser.email}}</h3>
+           </div>
+           <mat-divider></mat-divider>
+         
+           <div fxLayout="row"  fxLayoutGap="50px" >
+           <mat-icon >money</mat-icon> 
+           <h3  class="font" mat-line>cin : {{currentUser.cin}}</h3>
+           </div>
+           <mat-divider></mat-divider>
+           
+
+         </mat-nav-list>  
+
+
+       </mat-tab>
+       <mat-tab label="update">
+
+         <form style="padding: 20px;" fxLayout="row wrap" [formGroup]="updateForm" class="example-form">
+           <table fxLayout="row wrap"  fxFlex="100%" class="example-full-width" cellspacing="0">
+             <tr  fxLayout="row wrap" fxFlex="100%" fxLayoutGap="10px">
+               <td fxLayout="row wrap" fxFlex="calc(50%-10px)" >
+                 <mat-form-field   class="example-full-width" fxFlex="100%" appearance="fill">
+                 <mat-label>first_name</mat-label>
+                 <input  type="text" formControlName="first_name" matInput placeholder="Ex. California">
+                 <div *ngIf="f.first_name.errors && submitted">
+                    <mat-error *ngIf="f.first_name.errors?.['minLength']">first_name is required</mat-error>
+                </div>
+                </mat-form-field>
+              </td>
+               <td  fxLayout="row wrap" fxFlex="calc(50%-10px)" >
+                 <mat-form-field  fxFlex="100%"  class="example-full-width" appearance="fill">
+                 <mat-label>last_name</mat-label>
+                 <input type="text" formControlName="last_name"  matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+                 <div *ngIf="f.last_name.errors && submitted">
+                    <mat-error *ngIf="f.last_name.errors?.['minLength']">last_name is required</mat-error>
+                </div>
+                </mat-form-field>
+             </td>
+             </tr>
+           <tr fxFlex="100%" fxLayout="row wrap">
+               <mat-form-field  fxFlex="100%"class="example-full-width" appearance="fill">
+               <mat-label>email</mat-label>
+               <input type="email" formControlName="email"  matInput/>
+               <div *ngIf="f.email.errors && submitted">
+                <mat-error *ngIf="f.email.errors?.['email']">email is required</mat-error>
+               </div>
+            </mat-form-field>
+           </tr></table>
+    
+           <table fxLayout="row wrap" fxFlex="100%" class="example-full-width" cellspacing="0">
+           <tr  fxLayout="row wrap" fxFlex="100%"  fxLayoutGap="10px">
+             <td fxLayout="row wrap" fxFlex="calc(50%-10px)">
+               <mat-form-field  fxFlex="100%" class="example-full-width" appearance="fill">
+               <mat-label>cin</mat-label>
+               <input type="number" formControlName="cin" matInput placeholder="Ex. California">
+               <div *ngIf="f.cin.errors && submitted">
+                <mat-error *ngIf="f.cin.errors?.['cin']">cin is required</mat-error>
+               </div>
+            </mat-form-field>
+            </td>
+            
+           </tr>
+           <tr><button mat-raised-button color="primary" (click)="onSubmit()">submit</button></tr>
+          </table>
+         </form>
+       </mat-tab>
+     </mat-tab-group>
+
+   </mat-card>
+</div>

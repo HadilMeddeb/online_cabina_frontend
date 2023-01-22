@@ -1,0 +1,54 @@
+<mat-card>
+    <h3>Demande Details</h3>
+        <table  fxLayout="row wrap">
+            <tr class="pd-10" fxFlex="100%">
+                <td fxFlex="50%" >fullName </td>
+                <td fxFlex="50%">{{data.patient.first_name}} {{data.patient.last_name}}</td>
+            </tr>
+            <tr   class="pd-10" fxFlex="100%" > <mat-divider></mat-divider></tr>
+            <tr   class="pd-10" fxFlex="100%">
+                <td fxFlex="50%">marital status </td>
+                <td fxFlex="50%">{{data.patient.marital_status}}</td>
+            </tr>
+            <tr  class="pd-10" fxFlex="100%" > <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">birthday </td>
+                <td fxFlex="50%"> {{data.patient.birthday.day}} / {{data.patient.birthday.month}} / {{data.patient.birthday.year}}</td>
+            </tr>
+            <tr fxFlex="100%" > <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">Demand status  </td>
+                <td fxFlex="50%" [ngClass]="{'green':data.status,'danger':!data.status}">{{data.status ? "validated" : "unvalidated"}}</td>
+            </tr>
+            <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%"  class="pd-10">
+                <td fxFlex="50%">date of Demande reception</td>
+                <td fxFlex="50%">{{data.date.day}}/{{data.date.month}}/{{data.date.year}} - {{data.date.hour}}:{{data.date.minutes}}</td>
+            </tr>
+            <tr fxFlex="100%" > <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%"  class="pd-10">
+                <td fxFlex="50%"> interval of disponibility start:</td>
+                <td fxFlex="50%">{{data.debutDatesDisponible}}</td>
+            </tr>
+            <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">interval of disponibility end </td>
+                <td fxFlex="50%">{{data.finDatesDisponible}}</td>
+            </tr> 
+            <tr fxFlex="100%" > <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">illness details  </td>
+                <td fxFlex="50%">{{data.maladieDetails}}</td>
+            </tr> 
+            <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">persons ilness status </td>
+                <td fxFlex="50%">{{data.etat}}</td>
+            </tr> 
+            <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+            <tr fxFlex="100%" class="pd-10">
+                <td fxFlex="50%">reoson of the choice </td>
+                <td fxFlex="50%">{{data.raisonChoix}}</td>
+            </tr> 
+        </table>
+</mat-card>

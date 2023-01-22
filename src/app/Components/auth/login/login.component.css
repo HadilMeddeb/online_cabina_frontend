@@ -1,0 +1,38 @@
+.login-form
+{
+    width: 40%;
+    margin: auto;
+    margin-top:50px;
+    margin-bottom:50px;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #f4f5ff;
+}
+.link{
+    color: blue;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.card-header
+{
+    background-color: #6e7abe;
+    padding: 10px 0 10px 0;
+    display: flex;
+    -ms-flex-align: center;
+    color: #ffffff;
+    padding: 15px 0 15px 0;
+}
+.divider{
+    margin-top: 20px;
+}
+.alert-error
+{
+  text-align: center;
+  color: #ffffff;
+  background-color:#ffcccc;
+  width: 50%;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 30px;
+  margin: auto;
+}

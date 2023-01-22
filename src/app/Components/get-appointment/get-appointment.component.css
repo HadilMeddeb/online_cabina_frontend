@@ -1,0 +1,27 @@
+.bg{
+    background-color: rgb(167, 190, 255);
+    padding: 10px;
+    color: #ffffff;
+}
+.alert-success
+  {
+    background-color:#c3f4c3;
+    text-align: center;
+    color: #ffffff;
+    width: 50%;
+    padding: 20px 0px 20px 0px;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 30px;
+    margin: auto;
+  }
+  .alert-error
+  {
+    text-align: center;
+    color: #ffffff;
+    background-color:#ffcccc;
+    width: 50%;
+    padding: 20px 0px 20px 0px;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 30px;
+    margin: auto;
+  }

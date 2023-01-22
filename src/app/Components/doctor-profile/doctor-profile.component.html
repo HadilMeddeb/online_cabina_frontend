@@ -1,0 +1,99 @@
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+  <mat-card fxFlex="calc(30% - 20px)" >
+    <div fxLayout="row wrap">
+      <div fxFlex="100%">
+        <img  *ngIf="doctor.image" class=" img" src="assets/uploads/{{doctor.image}}"/>
+       <img  *ngIf="!doctor.image" class=" img" src="../../../../assets/images/online_phone_conversation.jfif"/>
+      </div>
+         <mat-nav-list fxFlex="100%">
+
+           <mat-divider></mat-divider>
+           <p  mat-list-item >
+             <span class="pd" mat-line>{{doctor.first_name}}  {{doctor.last_name}} </span>
+             
+           </p>
+           <mat-divider></mat-divider>
+           <p mat-list-item>
+             <span class="pd" mat-line>{{doctor.speciality}}</span>
+           </p>
+           <mat-divider></mat-divider>
+         </mat-nav-list>      
+   </div>
+  </mat-card>
+ <mat-card fxFlex="calc(70% - 20px)">
+   <h3>  Profile </h3>
+
+   <mat-tab-group animationDuration="2000ms">
+     <mat-tab  label="profile infos">
+       <mat-nav-list style="padding: 50px;" class="center" fxFlex="100%">
+         <mat-divider></mat-divider>
+         <div fxLayout="row"  fxLayoutGap="50px" >
+           <mat-icon>email</mat-icon>  
+         <h3  mat-line >email : {{doctor.email}}</h3>
+         </div>
+         <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutGap="50px" >
+         <mat-icon >phone</mat-icon> 
+         <h3 mat-line>phone number  : {{doctor.speciality}}</h3>
+        </div>
+         <mat-divider></mat-divider>
+         <div fxLayout="row"  fxLayoutGap="50px" >
+         <mat-icon>room</mat-icon> 
+         <h3  class="font"mat-line>local adress : {{doctor.adressLocal}}</h3>
+       </div>
+         <mat-divider></mat-divider>
+         <div fxLayout="row"  fxLayoutGap="50px" >
+         <mat-icon >money</mat-icon> 
+         <h3  class="font" mat-line>tarif : {{doctor.tarif}}</h3>
+         </div>
+         <mat-divider></mat-divider>
+         <div fxLayout="row"  fxLayoutGap="50px" >
+         <mat-icon >work</mat-icon> 
+         <h3  class="font" mat-line>professional career : {{doctor.professionnal_career}}</h3>
+       </div>
+       </mat-nav-list>  
+
+
+     </mat-tab>
+
+     <mat-tab label="reviews">           
+       <div fxLayout="row wrap" fxLayoutGap="20px" *ngIf="doctor.Avis.length>0">
+       <mat-card   *ngFor="let comment of doctor.Avis |paginate: { itemsPerPage: 10, currentPage: p }" fxFlex="100%"   class="example-card">
+         <mat-card-header>
+          <div *ngIf="comment.pocessor.image" style="margin-bottom: 10px;"mat-card-avatar class="example-header-image"><img src="assets/uploads/{{comment.pocessor.image}}"></div> 
+          <div *ngIf="!comment.pocessor.image" style="margin-bottom: 10px;"mat-card-avatar class="example-header-image"><img src="../../../assets/depositphotos_12196477-stock-photo-smiling-men-isolated-on-the.jpg"/></div>
+           <mat-card-title></mat-card-title>
+           <mat-card-subtitle>{{comment.pocessor.first_name}} {{comment.pocessor.last_name}}</mat-card-subtitle>
+         </mat-card-header>
+         <mat-card-content>
+           <p>
+           {{comment.text}}
+           </p>
+         </mat-card-content>
+         <mat-divider></mat-divider>
+       </mat-card>
+       <form  fxFlex="100%" [formGroup]="commentForm" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+        <input matInput placeholder="Ex. Type your opinion" formControlName="comment">
+        <mat-icon (click)="onSubmit()" class="pointer" fxFlex="calc(5% - 20px)">send</mat-icon>
+        <div *ngIf="f.comment.errors && submitted">
+          <mat-error *ngIf="f.comment.errors?.['required']">comment is required</mat-error>
+      </div>
+    </form>
+      <pagination-controls fxFlex="100%" (pageChange)="p = $event"></pagination-controls>
+     </div>
+     <div fxLayout="row wrap" *ngIf="doctor.Avis.length==0">
+       <p  fxFlex="100%" class="pd" style="color:gray"> there is No Reviews yet ..</p>
+       <form  fxFlex="100%" [formGroup]="commentForm" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+          <input matInput placeholder="Ex.Ex. Type your opinion" formControlName="comment">
+          <mat-icon (click)="onSubmit()" class="pointer" fxFlex="calc(5% - 20px)">send</mat-icon>
+          <div *ngIf="f.comment.errors && submitted">
+            <mat-error *ngIf="f.comment.errors?.['required']">comment is required</mat-error>
+        </div>
+      </form>
+
+     </div>
+     </mat-tab>
+   </mat-tab-group>
+
+ </mat-card>
+</div>

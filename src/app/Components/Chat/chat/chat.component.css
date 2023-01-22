@@ -1,0 +1,136 @@
+.sidenav
+{
+height: 100%;
+border-right: solid 1px rgb(186, 182, 182);
+}
+.container
+{
+    height: 100%;
+}
+.form-msg
+{
+    width: 100%;
+}
+mat-icon
+{
+    margin-right: 20px;
+    color: rgb(49, 49, 132);
+}
+.justify
+{
+    display: flex;
+    align-items: center;
+    color: rgb(49, 49, 132);
+    font-weight: bold;
+}
+.hight-long
+{
+ height: 90%;
+}
+.hight-short
+{
+ height: 10%;
+}
+.mg-bottom
+{
+    margin-bottom: 20px;
+}
+.pd
+{padding: 20px;}
+.bg-blue
+{
+    background-color: rgb(243, 242, 248);
+}
+.pd-none
+{padding: 0;}
+.img-profile
+{
+display: block;
+margin: 20px;
+height: 40px;
+width:40px;
+border: solid black 2px;
+border-radius: 50%;
+overflow: hidden;
+}
+.noun
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.mat-list-item
+{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 2px 0px;
+    padding: 0%;
+}
+form{
+  border-radius:50px;
+  background-color: rgb(223, 223, 248);
+  border: none;
+  margin: 15px 3px 15px 3px;
+  padding: 10px;
+  border: solid rgb(189, 187, 187) 1px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 2px 0px;
+}
+
+input
+{
+    background: none;
+    border: none;
+    width: 100%; 
+}
+*:focus {
+    outline: none;
+}
+.send-icon
+{
+    cursor: pointer;
+}
+.pointer
+{
+    cursor:pointer;
+}
+
+.active-room
+{
+    background-color: rgb(222, 245, 222);
+    border:  solid 1px rgb(143, 206, 143);
+}
+.mat-list
+{padding: 0%;}
+.message
+{
+   margin: 10px;
+   width: auto; 
+   padding: 10px;
+
+}
+.content-message
+{
+    background-color: rgb(189, 213, 249);
+    padding: 20px;
+    width: 80%;
+    border-radius: 20px;
+    overflow :hidden
+}
+.msg-time
+{
+     color: rgb(104, 104, 104);
+     font-size: 12px;
+}
+.conversation
+{
+height:600px;
+overflow-y:scroll ;
+}
+.mine
+{
+    display: flex;
+    align-items: flex-end; 
+    align-content: flex-end;
+   background-color: red;
+}
+.not-mine
+{
+    margin-right: 0;
+}

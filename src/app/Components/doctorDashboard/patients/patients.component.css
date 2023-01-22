@@ -1,0 +1,61 @@
+table {
+    width: 100%;
+  }
+  h1{
+      margin: 30px;
+  }
+  .alert-success
+{
+  background-color:#c3f4c3;
+  text-align: center;
+  color: #ffffff;
+  width: 50%;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px 10px 10px 10px;
+  margin: 30px;
+  margin: auto;
+}
+.alert-error
+{
+  text-align: center;
+  color: #ffffff;
+  background-color:#ffcccc;
+  width: 50%;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px 10px 10px 10px;
+  margin: 30px;
+  margin: auto;
+}
+.form
+{
+  border: solid gray 1px;
+  padding: 10px;
+  margin: 20px;
+}
+.btn-style
+{
+  color: rgb(45, 45, 148);
+  margin-left: 10px;
+}
+mat-icon
+{
+  display: block;
+  margin: 5px;
+  
+}
+.btn-view
+{color: rgb(49, 49, 148);
+  border :solid 1px rgb(49, 49, 148); 
+border-radius: 20px;
+margin: 5px;
+}
+.btn-remove
+{color: red;
+  border :solid 1px red; 
+  border-radius: 20px;
+  margin: 5px;}
+
+.btn-chat{color: rgb(49, 49, 148);
+  border :solid 1px rgb(49, 49, 148);
+  border-radius: 20px;
+  margin: 5px; }

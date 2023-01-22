@@ -1,0 +1,75 @@
+.container
+{
+    margin: 50px;
+ 
+
+}
+.img
+{
+    margin: auto;
+    width: 50%;   
+    display: block;
+    border-radius: 50%;
+}
+.center
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.disabled
+{
+    color: gray;
+    text-align: center;
+}
+
+.font
+{
+    font-size: 16px;
+}
+mat-icon
+{
+    color: rgb(27, 82, 171);
+}
+.mg-bottom
+{
+    margin-bottom: 20px;
+}
+.example-header-image img {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    border-radius: 50%;
+  }
+  .bg{
+      background-color: rgb(198, 230, 247);}
+  .pointer
+  {cursor: pointer;}
+
+  .pd
+{
+    display: block;
+    margin: 20px;
+}
+form{
+    border-radius:20px;
+    background-color: rgb(239, 239, 244);
+  border: none;
+  margin: 15px 3px 15px 3px;
+   padding: 10px;
+   border: solid rgb(189, 187, 187) 1px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 2px 0px;
+}
+input
+{
+    background: none;
+    border: none;
+    width: 100%;
+}
+*:focus {
+    outline: none;
+}
+.send-icon
+{
+    cursor: pointer;
+}

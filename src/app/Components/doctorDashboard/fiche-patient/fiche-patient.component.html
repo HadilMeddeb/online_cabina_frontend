@@ -1,0 +1,98 @@
+<div class="container">
+    <mat-card>
+        <mat-tab-group>
+            <mat-tab label="patient"> 
+               <mat-card>
+               <div *ngIf="patient">
+                <table  fxLayout="row wrap">
+                  <tr class="pd-10" fxFlex="100%">
+                      <td fxFlex="50%" >fullName </td>
+                      <td fxFlex="50%">{{patient.first_name}} {{patient.last_name}}</td>
+                  </tr>
+                  <tr   fxFlex="100%" > <mat-divider></mat-divider></tr>
+                  <tr   class="pd-10" fxFlex="100%">
+                      <td fxFlex="50%">cin </td>
+                      <td fxFlex="50%">{{patient.cin}}</td>
+                  </tr>
+                  <tr  fxFlex="100%" > <mat-divider></mat-divider></tr>
+                  <tr fxFlex="100%" class="pd-10">
+                      <td fxFlex="50%">birthday </td>
+                      <td fxFlex="50%"> {{patient.birthday.day}} / {{patient.birthday.month}} / {{patient.birthday.year}}</td>
+                  </tr>
+                  <tr fxFlex="100%" > <mat-divider></mat-divider></tr>
+                  <tr fxFlex="100%" class="pd-10">
+                      <td fxFlex="50%">phone </td>
+                      <td fxFlex="50%" >{{patient.phone}} </td>
+                  </tr>
+                  <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+                  <tr fxFlex="100%"  class="pd-10">
+                      <td fxFlex="50%">email</td>
+                      <td fxFlex="50%">{{patient.email}}</td>
+                  </tr>
+                  <tr fxFlex="100%" > <mat-divider></mat-divider></tr>
+                  <tr fxFlex="100%"  class="pd-10">
+                      <td fxFlex="50%"> adress</td>
+                      <td fxFlex="50%">{{patient.adress}}</td>
+                  </tr>
+                  <tr fxFlex="100%"> <mat-divider></mat-divider></tr>
+                  <tr fxFlex="100%" class="pd-10">
+                      <td fxFlex="50%">marital_status </td>
+                      <td fxFlex="50%">{{patient.marital_status}}</td>
+                  </tr> 
+              </table>
+               </div>
+               </mat-card>    
+            </mat-tab> 
+            <mat-tab *ngIf="fiche" label="fiche patient">
+                <mat-accordion class="example-headers-align">
+                  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header fxLayout="row wrap">
+                      <mat-panel-title  fxFlex="100%">
+                        <h3 class="title" fxFlex="100%">
+                          <mat-icon class="icon">account_circle</mat-icon>
+                          Patient illness first Description
+                        </h3>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="border">
+                      {{fiche.illness_first_description}}
+                    </div>
+                  </mat-expansion-panel>
+                
+                  <mat-expansion-panel *ngFor="let consultation of fiche.interviewsNotations" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <mat-icon class="icon">assignment_turned_in</mat-icon>
+                          {{consultation.date}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          <mat-list role="list">
+                            <mat-list-item role="listitem"></mat-list-item>
+                            <mat-divider></mat-divider>
+                          </mat-list>
+                       
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      {{consultation.remarqs}}
+                    </mat-expansion-panel>
+                
+                   <mat-expansion-panel   [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title >
+                          <mat-icon class="icon">add</mat-icon>
+                          Add New interview details
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                  
+             
+                      <form  fxFlex="100%" [formGroup]="consultationForm" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+                        <textarea matInput placeholder="Ex.Ex. Type your opinion" formControlName="remarqs"></textarea>
+                        <mat-icon (click)="AddRemarq()" class="pointer" fxFlex="calc(5% - 20px)">send</mat-icon>
+                      </form>
+                    </mat-expansion-panel> 
+                </mat-accordion>
+            </mat-tab>   
+          </mat-tab-group>
+
+    </mat-card>
+</div>

@@ -1,0 +1,50 @@
+.container
+{
+    margin: 50px;
+}
+.pd-10
+{padding: 20px;}
+.title
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: flex;
+   
+    align-items: center;
+
+}
+.icon
+{
+    color: #3a5da7;
+    margin-right: 20px;
+}
+.border
+{
+    border: solid 1px rgb(212, 211, 211) ;
+    padding: 20px;
+}
+form{
+    border-radius:20px;
+    background-color: rgb(239, 239, 244);
+  border: none;
+  margin: 15px 3px 15px 3px;
+   padding: 10px;
+   border: solid rgb(189, 187, 187) 1px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 2px 0px;
+}
+textarea
+{
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 50px;
+}
+*:focus {
+    outline: none;
+}
+.send-icon
+{
+    cursor: pointer;
+}
+.pointer
+{cursor: pointer;}

@@ -1,0 +1,17 @@
+.pd-10
+{
+    padding: 10px;
+}
+.green
+{
+    color: green
+}
+.danger
+{
+    color: red
+}
+h3{
+    padding: 20px;
+    background-color: rgb(75, 93, 186);
+    color: #ffffff;
+}

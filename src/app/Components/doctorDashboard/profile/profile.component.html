@@ -1,0 +1,163 @@
+
+<div class="alert-error" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+<div class="alert-success" *ngIf="successMessage">
+  {{successMessage}}
+</div>
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+     <mat-card fxFlex="calc(30% - 20px)" >
+       <div fxLayout="row wrap">
+         <div fxFlex="100%">
+          <img  *ngIf="currentUser.image" class="img" src="assets/uploads/{{currentUser.image}}"/>
+         <img  *ngIf="!currentUser.image"  class=" img" src="../../../../assets//images/online_phone_conversation.jfif"/>
+        
+        </div>
+            <mat-nav-list fxFlex="100%">
+              <form style="display: flex; align-items: center; justify-content: center;">
+                <input style="margin: 20px;" name="image"  (change)="onFileSelect($event)" type="file"/>
+                <div *ngIf="fim.image.errors && photoSubmit">
+                <mat-error *ngIf="fim.image.errors?.['required']">image is required</mat-error>
+            </div>
+                 <mat-icon type="submit" (click)="updatePhoto()" fxFlex="calc(5% - 20px)">send</mat-icon>
+             
+              </form>
+              <mat-divider></mat-divider>
+              <p  mat-list-item >
+                <span class="pd" mat-line>{{currentUser.first_name}}  {{currentUser.last_name}} </span>
+                
+              </p>
+              <mat-divider></mat-divider>
+              <p mat-list-item>
+                <span class="pd" mat-line>{{currentUser.speciality}}</span>
+              </p>
+              <mat-divider></mat-divider>
+            </mat-nav-list>      
+      </div>
+     </mat-card>
+    <mat-card fxFlex="calc(70% - 20px)">
+      <h3>  Profile </h3>
+
+      <mat-tab-group animationDuration="2000ms">
+        <mat-tab  label="profile infos">
+          <mat-nav-list style="padding: 50px;" class="center" fxFlex="100%">
+            <mat-divider></mat-divider>
+            <div fxLayout="row"  fxLayoutGap="50px" >
+              <mat-icon>email</mat-icon>  
+            <h3  mat-line >email : {{currentUser.email}}</h3>
+            </div>
+            <mat-divider></mat-divider>
+           <div fxLayout="row" fxLayoutGap="50px" >
+            <mat-icon >phone</mat-icon> 
+            <h3 mat-line>phone number  : {{currentUser.speciality}}</h3>
+           </div>
+            <mat-divider></mat-divider>
+            <div fxLayout="row"  fxLayoutGap="50px" >
+            <mat-icon>room</mat-icon> 
+            <h3  class="font"mat-line>local adress : {{currentUser.adressLocal}}</h3>
+          </div>
+            <mat-divider></mat-divider>
+            <div fxLayout="row"  fxLayoutGap="50px" >
+            <mat-icon >money</mat-icon> 
+            <h3  class="font" mat-line>tarif : {{currentUser.tarif}}</h3>
+            </div>
+            <mat-divider></mat-divider>
+            <div fxLayout="row"  fxLayoutGap="50px" >
+            <mat-icon >work</mat-icon> 
+            <h3  class="font" mat-line>professional career : {{currentUser.professionnal_career}}</h3>
+          </div>
+          </mat-nav-list>  
+
+
+        </mat-tab>
+        <mat-tab label="update">
+
+          <form style="padding: 20px;" fxLayout="row wrap" [formGroup]="updateForm" class="example-form">
+            <table fxLayout="row wrap"  fxFlex="100%" class="example-full-width" cellspacing="0">
+              <tr  fxLayout="row wrap" fxFlex="100%" fxLayoutGap="10px">
+                <td fxLayout="row wrap" fxFlex="calc(50%-10px)" >
+                  <mat-form-field   class="example-full-width" fxFlex="100%" appearance="fill">
+                  <mat-label>first_name</mat-label>
+                  <input  type="text" formControlName="first_name" matInput placeholder="Ex. California">
+                </mat-form-field>
+               </td>
+                <td  fxLayout="row wrap" fxFlex="calc(50%-10px)" >
+                  <mat-form-field  fxFlex="100%"  class="example-full-width" appearance="fill">
+                  <mat-label>last_name</mat-label>
+                  <input type="text" formControlName="last_name"  matInput  placeholder="Ex. 94105" value="94043">
+       
+                </mat-form-field>
+              </td>
+              </tr>
+            <tr fxFlex="100%" fxLayout="row wrap">
+                <mat-form-field  fxFlex="100%"class="example-full-width" appearance="fill">
+                <mat-label>email</mat-label>
+                <input type="email" formControlName="email"  matInput/>
+              </mat-form-field>
+            </tr></table>
+          
+            <table fxLayout="row wrap" fxFlex="100%">
+              <tr fxLayout="row wrap" fxFlex="100%">
+                   
+                    <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+                      <mat-label>local Address</mat-label>
+                      <textarea formControlName="adressLocal" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+                    </mat-form-field>
+                   
+              </tr>
+              <tr fxLayout="row wrap" fxFlex="100%">
+                  
+                    <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+                      <mat-label>professionnal career</mat-label>
+                      <textarea formControlName="professionnal_career" matInput></textarea>
+                    </mat-form-field>
+              
+              </tr>
+             <tr fxLayout="row wrap" fxFlex="100%">
+         
+                <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+                  <mat-label>speciality</mat-label>
+                  <input formControlName="speciality" matInput>
+                </mat-form-field>
+            
+             </tr>
+            </table>
+          
+            <table fxLayout="row wrap" fxFlex="100%" class="example-full-width" cellspacing="0">
+              <tr fxLayout="row wrap" fxFlex="100%">
+         
+                <mat-form-field fxFlex="100%" class="example-full-width" appearance="fill">
+                  <mat-label>tarif</mat-label>
+                  <input formControlName="tarif" matInput>
+                </mat-form-field>
+            
+             </tr>
+            <tr><button mat-raised-button color="primary" (click)="onSubmit()">submit</button></tr>
+           </table>
+          </form>
+
+        </mat-tab>
+        <!-- <mat-tab label="reviews">           
+          <div *ngIf="currentUser.Avis.length>0">
+          <mat-card  *ngFor="let comment of currentUser.Avis" fxFlex="100%"  style="margin-bottom: 20px;"  class="example-card">
+            <mat-card-header>
+              <div *ngIf="comment.pocessor.image" mat-card-avatar class="example-header-image"><img src="assets/images/uploads/{{comment.pocessor.image}}"/></div>
+              <div *ngIf="!comment.pocessor.image" mat-card-avatar class="example-header-image"><img src="../../../assets//images/depositphotos_12196477-stock-photo-smiling-men-isolated-on-the.jpg"/></div>
+              <mat-card-title></mat-card-title>
+              <mat-card-subtitle>{{comment.pocessor.first_name}} {{comment.pocessor.last_name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+              {{comment.text}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div *ngIf="currentUser.Avis.length==0">
+          <p class="pd" style="color:gray"> there is No Reviews yet ..</p>
+        </div>
+        </mat-tab> -->
+      </mat-tab-group>
+
+    </mat-card>
+  </div>

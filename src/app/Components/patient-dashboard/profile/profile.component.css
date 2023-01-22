@@ -1,0 +1,49 @@
+.img
+{
+    margin: auto;
+    width: 50%;   
+    display: block;
+    border-radius: 50%;
+}
+mat-icon
+{
+    color: rgb(27, 82, 171);
+}
+.pointer
+{cursor: pointer;}
+
+.container
+{
+    margin: 30px;
+}
+.align
+{
+    justify-content: center;
+    text-align: center;
+}
+.mg
+{margin: 20px;}
+
+
+.alert-success
+{
+  background-color:#c3f4c3;
+  text-align: center;
+  color: #ffffff;
+  width: 50%;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 30px;
+  margin: auto;
+}
+.alert-error
+{
+  text-align: center;
+  color: #ffffff;
+  background-color:#ffcccc;
+  width: 50%;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 30px;
+  margin: auto;
+}
